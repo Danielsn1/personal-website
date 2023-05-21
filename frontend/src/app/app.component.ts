@@ -1,10 +1,28 @@
-import { Component } from '@angular/core';
+import { HomeComponent } from "./home/home.component";
+import { Component } from "@angular/core";
+import { RouterModule } from "@angular/router";
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
+  standalone: true,
+  imports: [
+    HomeComponent,
+    RouterModule,
+  ],
+  template: `
+    <main>
+      <a [routerLink]="['/']">
+        <header class="brand-name">
+          <img src="/assets/logo.svg" alt="logo" class="brand-logo" aria-hidden="true">
+        </header>
+      </a>
+      <section class="content">
+        <router-outlet></router-outlet>
+      </section>
+    </main>`,
   styleUrls: ['./app.component.sass']
 })
+
 export class AppComponent {
-  title = 'frontend';
+  title = 'homes';
 }
